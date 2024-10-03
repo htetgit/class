@@ -1,0 +1,41 @@
+sudo apt update
+sudo apt -y install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get install -y php8.3
+sudo apt-get install -y nginx php8.3-fpm php8.3-cli php8.3-common php8.3-mbstring php8.3-gd php8.3-intl php8.3-xml php8.3-mysql php8.3-zip php8.3-bcmath php8.3-soap php8.3-redis php8.3-curl php8.3-imagick php8.3-xmlrpc php8.3-xsl
+
+ubuntu@ip-172-26-7-192:~$ sudo systemctl status php8.3-fpm
+● php8.3-fpm.service - The PHP 8.3 FastCGI Process Manager
+     Loaded: loaded (/usr/lib/systemd/system/php8.3-fpm.service; enabled; prese>
+     Active: active (running) since Thu 2024-10-03 06:20:32 UTC; 2h 26min ago
+       Docs: man:php-fpm8.3(8)
+    Process: 16679 ExecStartPost=/usr/lib/php/php-fpm-socket-helper install /ru>
+   Main PID: 16675 (php-fpm8.3)
+     Status: "Processes active: 0, idle: 2, Requests: 18, slow: 0, Traffic: 0.0>
+      Tasks: 3 (limit: 1078)
+     Memory: 60.6M (peak: 62.6M)
+        CPU: 1.606s
+     CGroup: /system.slice/php8.3-fpm.service
+             ├─16675 "php-fpm: master process (/etc/php/8.3/fpm/php-fpm.conf)"
+             ├─16677 "php-fpm: pool www"
+             └─16678 "php-fpm: pool www"
+
+Oct 03 06:20:31 ip-172-26-7-192 systemd[1]: Starting php8.3-fpm.service - The P>
+Oct 03 06:20:32 ip-172-26-7-192 systemd[1]: Started php8.3-fpm.service - The PH>
+lines 1-17/17 (END)
+
+
+ubuntu@ip-172-26-7-192:~$ sudo atp install -y nodejs npm
+ubuntu@ip-172-26-7-192:~$ node -v
+v18.19.1
+ubuntu@ip-172-26-7-192:~$ npm -v
+9.2.0
+ubuntu@ip-172-26-7-192:~$ sudo apt install -y mysql-server
+ubuntu@ip-172-26-7-192:~$ sudo mysql_secure_installation
+
+ubuntu@ip-172-26-7-192:~$ sudo mysql
+mysql> CREATE USER 'laravel'@'localhost' IDENTIFIED BY 'r@otUser';
+       CREATE DATABASE laravel;
+       GRANT ALL PRIVILEGES ON laravel.* TO 'laravel'@'localhost';
+       FLUSH PRIVILEGES;
+mysql>
