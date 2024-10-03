@@ -1,0 +1,124 @@
+ubuntu@ip-172-26-7-192:~$ npm -v
+9.2.0
+ubuntu@ip-172-26-7-192:~$ node -v
+v18.19.1
+ubuntu@ip-172-26-7-192:~$ 
+
+mysql> CREATE USER 'laravel'@'localhost' IDENTIFIED BY 'r@otUser';
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE DATABASE laravel;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> GRANT ALL PRIVILEGES ON laravel.* TO 'laravel'@'localhost';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> exit
+ubuntu@ip-172-26-7-192:~$ sudo vim /etc/php/8.3/fpm/pool.d/www.conf
+
+ubuntu@ip-172-26-7-192:~$ cd /var/www/html
+ubuntu@ip-172-26-7-192:/var/www/html$ ll
+total 24
+drwxr-xr-x 2 root root  4096 Oct  3 03:28 ./
+drwxr-xr-x 3 root root  4096 Oct  3 03:11 ../
+-rw-r--r-- 1 root root 10671 Oct  3 03:11 index.html
+-rw-r--r-- 1 root root   615 Oct  3 03:28 index.nginx-debian.html
+ubuntu@ip-172-26-7-192:/var/www/html$ cd ..
+ubuntu@ip-172-26-7-192:/var/www$ ll
+total 12
+drwxr-xr-x  3 root root 4096 Oct  3 03:11 ./
+drwxr-xr-x 14 root root 4096 Oct  3 03:11 ../
+drwxr-xr-x  2 root root 4096 Oct  3 03:28 html/
+ubuntu@ip-172-26-7-192:/var/www$ git clone https://github.com/devktops/laravel-todo.git
+fatal: could not create work tree dir 'laravel-todo': Permission denied
+ubuntu@ip-172-26-7-192:/var/www$ sudo git clone https://github.com/devktops/laravel-todo.gi
+t
+
+Cloning into 'laravel-todo'...
+remote: Enumerating objects: 197, done.
+remote: Counting objects: 100% (16/16), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 197 (delta 3), reused 3 (delta 1), pack-reused 181 (from 1)
+Receiving objects: 100% (197/197), 123.65 KiB | 8.24 MiB/s, done.
+Resolving deltas: 100% (36/36), done.
+ubuntu@ip-172-26-7-192:/var/www$ ll
+total 16
+drwxr-xr-x  4 root root 4096 Oct  3 04:25 ./
+drwxr-xr-x 14 root root 4096 Oct  3 03:11 ../
+drwxr-xr-x  2 root root 4096 Oct  3 03:28 html/
+drwxr-xr-x 12 root root 4096 Oct  3 04:25 laravel-todo/
+ubuntu@ip-172-26-7-192:/var/www$ sudo usermod -aG www-data ubuntu
+ubuntu@ip-172-26-7-192:/var/www$ sudo chown -R ubuntu:www-data laravel-todo
+ubuntu@ip-172-26-7-192:/var/www$ 
+ubuntu@ip-172-26-7-192:/var/www$ cd laravel-todo
+ubuntu@ip-172-26-7-192:/var/www/laravel-todo$ sudo apt install composer
+ubuntu@ip-172-26-7-192:/var/www/laravel-todo$ composer install
+ubuntu@ip-172-26-7-192:/var/www/laravel-todo$ ll
+ubuntu@ip-172-26-7-192:/var/www/laravel-todo$ ll
+total 492
+drwxr-xr-x 13 ubuntu www-data   4096 Oct  3 04:36 ./
+drwxr-xr-x  4 root   root       4096 Oct  3 04:25 ../
+-rw-r--r--  1 ubuntu www-data    258 Oct  3 04:25 .editorconfig
+-rw-r--r--  1 ubuntu www-data   1101 Oct  3 04:25 .env.example
+drwxr-xr-x  8 ubuntu www-data   4096 Oct  3 04:25 .git/
+-rw-r--r--  1 ubuntu www-data    186 Oct  3 04:25 .gitattributes
+-rw-r--r--  1 ubuntu www-data    258 Oct  3 04:25 .gitignore
+-rw-r--r--  1 ubuntu www-data   3507 Oct  3 04:25 README.md
+drwxr-xr-x  8 ubuntu www-data   4096 Oct  3 04:25 app/
+-rwxr-xr-x  1 ubuntu www-data   1686 Oct  3 04:25 artisan*
+drwxr-xr-x  3 ubuntu www-data   4096 Oct  3 04:25 bootstrap/
+-rw-r--r--  1 ubuntu www-data   2033 Oct  3 04:25 composer.json
+-rw-r--r--  1 ubuntu www-data 306196 Oct  3 04:25 composer.lock
+drwxr-xr-x  2 ubuntu www-data   4096 Oct  3 04:25 config/
+drwxr-xr-x  5 ubuntu www-data   4096 Oct  3 04:25 database/
+-rw-r--r--  1 ubuntu www-data    169 Oct  3 04:25 jsconfig.json
+-rw-r--r--  1 ubuntu www-data  87059 Oct  3 04:25 package-lock.json
+-rw-r--r--  1 ubuntu www-data    657 Oct  3 04:25 package.json
+-rw-r--r--  1 ubuntu www-data   1084 Oct  3 04:25 phpunit.xml
+-rw-r--r--  1 ubuntu www-data     93 Oct  3 04:25 postcss.config.js
+drwxr-xr-x  2 ubuntu www-data   4096 Oct  3 04:25 public/
+drwxr-xr-x  5 ubuntu www-data   4096 Oct  3 04:25 resources/
+drwxr-xr-x  2 ubuntu www-data   4096 Oct  3 04:25 routes/
+drwxr-xr-x  5 ubuntu www-data   4096 Oct  3 04:25 storage/
+-rw-r--r--  1 ubuntu www-data    576 Oct  3 04:25 tailwind.config.js
+drwxr-xr-x  4 ubuntu www-data   4096 Oct  3 04:25 tests/
+drwxrwxr-x 42 ubuntu ubuntu     4096 Oct  3 04:36 vendor/
+-rw-r--r--  1 ubuntu www-data    512 Oct  3 04:25 vite.config.js
+
+ubuntu@ip-172-26-7-192:/var/www/laravel-todo$ npm i
+ubuntu@ip-172-26-7-192:/var/www/laravel-todo$ ll
+total 492
+drwxr-xr-x 13 ubuntu www-data   4096 Oct  3 04:36 ./
+drwxr-xr-x  4 root   root       4096 Oct  3 04:25 ../
+-rw-r--r--  1 ubuntu www-data    258 Oct  3 04:25 .editorconfig
+-rw-r--r--  1 ubuntu www-data   1101 Oct  3 04:25 .env.example
+drwxr-xr-x  8 ubuntu www-data   4096 Oct  3 04:25 .git/
+-rw-r--r--  1 ubuntu www-data    186 Oct  3 04:25 .gitattributes
+-rw-r--r--  1 ubuntu www-data    258 Oct  3 04:25 .gitignore
+-rw-r--r--  1 ubuntu www-data   3507 Oct  3 04:25 README.md
+drwxr-xr-x  8 ubuntu www-data   4096 Oct  3 04:25 app/
+-rwxr-xr-x  1 ubuntu www-data   1686 Oct  3 04:25 artisan*
+drwxr-xr-x  3 ubuntu www-data   4096 Oct  3 04:25 bootstrap/
+-rw-r--r--  1 ubuntu www-data   2033 Oct  3 04:25 composer.json
+-rw-r--r--  1 ubuntu www-data 306196 Oct  3 04:25 composer.lock
+drwxr-xr-x  2 ubuntu www-data   4096 Oct  3 04:25 config/
+drwxr-xr-x  5 ubuntu www-data   4096 Oct  3 04:25 database/
+-rw-r--r--  1 ubuntu www-data    169 Oct  3 04:25 jsconfig.json
+-rw-r--r--  1 ubuntu www-data  87059 Oct  3 04:25 package-lock.json
+-rw-r--r--  1 ubuntu www-data    657 Oct  3 04:25 package.json
+-rw-r--r--  1 ubuntu www-data   1084 Oct  3 04:25 phpunit.xml
+-rw-r--r--  1 ubuntu www-data     93 Oct  3 04:25 postcss.config.js
+drwxr-xr-x  2 ubuntu www-data   4096 Oct  3 04:25 public/
+drwxr-xr-x  5 ubuntu www-data   4096 Oct  3 04:25 resources/
+drwxr-xr-x  2 ubuntu www-data   4096 Oct  3 04:25 routes/
+drwxr-xr-x  5 ubuntu www-data   4096 Oct  3 04:25 storage/
+-rw-r--r--  1 ubuntu www-data    576 Oct  3 04:25 tailwind.config.js
+drwxr-xr-x  4 ubuntu www-data   4096 Oct  3 04:25 tests/
+drwxrwxr-x 42 ubuntu ubuntu     4096 Oct  3 04:36 vendor/
+-rw-r--r--  1 ubuntu www-data    512 Oct  3 04:25 vite.config.js
+
+ubuntu@ip-172-26-7-192:/var/www/laravel-todo$ npm run build
+
